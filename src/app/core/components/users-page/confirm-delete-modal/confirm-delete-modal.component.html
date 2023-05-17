@@ -1,1 +1,12 @@
-<p>confirm-delete-modal works!</p>
+<div (click)="cancel()" class="delete-modal-bg"></div>
+
+<div class="delete-modal">
+  <div class="delete-modal-body">
+    <h3 class='medium-title'>Are you sure?</h3>
+    <p class='text'>Do you really want to delete this user?</p>
+    <div class="btns-block">
+      <app-btn (onClickBtn)="deleteCard()" btnTitle="Delete"></app-btn>
+      <app-btn (onClickBtn)="cancel()" btnTitle="Cancel"></app-btn>
+    </div>
+  </div>
+</div>

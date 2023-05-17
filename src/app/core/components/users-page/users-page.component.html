@@ -1,8 +1,16 @@
 <div class="users-page-block">
   <div class="wrapper users-page-body">
+    <app-confirm-delete-modal (onCancel)="closeDeleteModal()" (onDelete)='deleteUser()'
+      *ngIf="openDeleteModal"></app-confirm-delete-modal>
     <h1 class='big-title'>Users</h1>
-    <div class="cards" *ngIf="!loading">
-      <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+    <div *ngIf="!loading">
+      <div class="cards">
+        <app-user-card (onDelete)="showDeleteModal(+user.id)" *ngFor="let user of users" [user]="user"></app-user-card>
+      </div>
+      <div class="page-nav">
+        <button (click)="changePage(1)" [ngClass]="{'active': pageNumber === 1}" class='text page-nav-btn'>1</button>
+        <button (click)="changePage(2)" [ngClass]="{'active': pageNumber === 2}" class='text page-nav-btn'>2</button>
+      </div>
     </div>
     <p *ngIf="loading" style='text-align: center;' class='text'>Loading...</p>
   </div>

@@ -29,7 +29,7 @@ export class BtnComponent implements OnInit, OnChanges {
     {
       iconPath: this.btnIconFolderPAth + 'cancel.svg',
       title: 'Cancel',
-      color: '#BD002D',
+      color: '#8f8f8f',
     },
     {
       iconPath: this.btnIconFolderPAth + 'delete.svg',

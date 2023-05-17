@@ -6,10 +6,15 @@ import { delay, map } from 'rxjs';
   providedIn: 'root',
 })
 export class UsersService {
+  activePage: number;
   constructor(private http: HttpClient) {}
 
-  getUsers() {
-    return this.http.get('https://reqres.in/api/users');
+  getUsers(pageNumber: number) {
+    return this.http.get('https://reqres.in/api/users', {
+      params: {
+        page: pageNumber,
+      },
+    });
   }
   getUserById(id: number) {
     return this.http.get(`https://reqres.in/api/users/${id}`);

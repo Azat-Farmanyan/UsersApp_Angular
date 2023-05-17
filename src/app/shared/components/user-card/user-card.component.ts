@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/interfaces/user';
 
@@ -8,6 +8,8 @@ import { User } from 'src/app/core/interfaces/user';
   styleUrls: ['./user-card.component.scss'],
 })
 export class UserCardComponent implements OnInit {
+  @Output() onDelete = new EventEmitter();
+
   @Input() user: User = {
     avatar: '',
     email: 'undefined',
@@ -28,6 +30,6 @@ export class UserCardComponent implements OnInit {
   }
 
   onClickDelete() {
-    console.log('onClickDelete');
+    this.onDelete.emit();
   }
 }

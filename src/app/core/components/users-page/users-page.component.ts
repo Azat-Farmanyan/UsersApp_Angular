@@ -14,6 +14,9 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   usersSubs: Subscription;
 
   loading = false;
+  deletedUserId: number | null = 0;
+  pageNumber = 1;
+  openDeleteModal = false;
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
@@ -26,11 +29,30 @@ export class UsersPageComponent implements OnInit, OnDestroy {
 
   fetchUsers() {
     this.loading = true;
-    this.usersSubs = this.usersService.getUsers().subscribe((el: any) => {
-      this.users = el.data;
-      this.loading = false;
-      // console.log(this.users);
-    });
+    this.usersSubs = this.usersService
+      .getUsers(this.usersService.activePage)
+      .subscribe((el: any) => {
+        this.users = el.data;
+        this.loading = false;
+        // console.log(this.users);
+      });
+  }
+
+  deleteUser() {
+    console.log(this.deletedUserId);
+  }
+
+  showDeleteModal(userId: number) {
+    this.openDeleteModal = true;
+    this.deletedUserId = userId;
+  }
+  closeDeleteModal() {
+    this.openDeleteModal = false;
+  }
+  changePage(pageNum: number) {
+    this.usersService.activePage = pageNum;
+    this.pageNumber = this.usersService.activePage;
+    this.fetchUsers();
   }
 
   ngOnDestroy(): void {

@@ -9,5 +9,31 @@
       gap: 30px;
       justify-content: space-around;
     }
+    .page-nav {
+      width: 100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      margin-top: 50px;
+      .page-nav-btn {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border: 0.5px solid var(--blue);
+        border-radius: 50%;
+        color: var(--blue);
+        transition: all 0.5s ease;
+        &:hover {
+          color: #fff;
+          background: var(--blue);
+        }
+      }
+      .active {
+        background: var(--blue);
+        border-radius: 50%;
+        color: #fff;
+      }
+    }
   }
 }
