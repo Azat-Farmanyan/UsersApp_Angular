@@ -1,0 +1,34 @@
+.user-card {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  &:hover {
+    box-shadow: 0px 4px 7px rgba(104, 199, 228, 0.4);
+  }
+  .user-card-body {
+    display: flex;
+    flex-direction: column;
+    .card-img {
+      max-width: 300px;
+      width: 100%;
+      min-height: 300px;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: var(--blue-light);
+      padding: 20px;
+      .btns-block {
+        display: flex;
+        gap: 10px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

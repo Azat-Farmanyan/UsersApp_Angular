@@ -1,1 +1,25 @@
-<p>user-page works!</p>
+<div class="user-block">
+  <div class="wrapper user-body">
+    <div class="user-header">
+      <img [routerLink]="['/users-page']" src="../../../../assets/icons/return-back.svg" alt="return"
+        class='return-back'>
+      <h1 class='big-title'>User page</h1>
+      <app-btn btnTitle="Log Out"></app-btn>
+    </div>
+    <div class="main" *ngIf="!loading">
+      <img [src]="user.avatar?user.avatar:'../../../../assets/images/default-avatar.jpg'" [alt]="user.first_name"
+        class="card-img">
+      <div class="card-text-block">
+        <p class='text'>ID: {{user.id}}</p>
+        <p class='text'>First Name: {{user.first_name}}</p>
+        <p class='text'>Last Name: {{user.last_name}}</p>
+        <p class='text'>Email: {{user.email}}</p>
+        <div class="btns-block">
+          <app-btn (onClickBtn)="onClickEdit()" btnTitle="Edit"></app-btn>
+          <app-btn (onClickBtn)="onClickDelete()" btnTitle="Delete"></app-btn>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="loading" class='text'>Loading...</p>
+  </div>
+</div>

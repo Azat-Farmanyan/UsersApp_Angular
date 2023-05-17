@@ -143,18 +143,17 @@ a:active {
 }
 // COlORS
 :root {
-  $black: #000000;
-  $black-light: #282828;
-  $gray: #8f8f8f;
-  $gray-normal: #d9d9d9;
-  $gray-light: #f9f9f9;
-  $yellow: #ffba52;
-  $red: #ea2a00;
-  $blue: #007aea;
-  $blue-light: #ecfdff;
-  $violet: #6700ea;
+  --black: #000000;
+  --black-light: #282828;
+  --gray: #8f8f8f;
+  --gray-normal: #d9d9d9;
+  --gray-light: #f9f9f9;
+  --yellow: #ffba52;
+  --red: #ea2a00;
+  --blue: #007aea;
+  --blue-light: #ecfdff;
+  --violet: #6700ea;
 }
-// END OF COLORS
 
 .wrapper {
   padding: 50px;

@@ -1,0 +1,13 @@
+.users-page-block {
+  .users-page-body {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-around;
+    }
+  }
+}

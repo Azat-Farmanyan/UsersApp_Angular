@@ -1,11 +1,9 @@
 <div class="users-page-block">
   <div class="wrapper users-page-body">
     <h1 class='big-title'>Users</h1>
-    <app-btn (onClickBtn)="clicked()" btnTitle="Cancel"></app-btn>
-    <app-btn (onClickBtn)="clicked()" btnTitle="Delete"></app-btn>
-    <app-btn (onClickBtn)="clicked()" btnTitle="Edit"></app-btn>
-    <app-btn (onClickBtn)="clicked()" btnTitle="Enter"></app-btn>
-    <app-btn (onClickBtn)="clicked()" btnTitle="Log Out"></app-btn>
-    <app-btn (onClickBtn)="clicked()" btnTitle="Save"></app-btn>
+    <div class="cards" *ngIf="!loading">
+      <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+    </div>
+    <p *ngIf="loading" style='text-align: center;' class='text'>Loading...</p>
   </div>
 </div>

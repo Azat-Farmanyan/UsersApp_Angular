@@ -43,7 +43,7 @@ export class BtnComponent implements OnInit, OnChanges {
     },
     {
       iconPath: this.btnIconFolderPAth + 'enter.svg',
-      title: 'Enter',
+      title: 'About',
       color: '#007AEA',
     },
     {
