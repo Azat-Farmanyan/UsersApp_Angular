@@ -9,18 +9,26 @@
       <div>
         <label class='input-label' for="first-name">First Name</label>
         <input formControlName="firstName" class='edit-input input' id='first-name' type="text">
+        <div class="error" *ngIf="editForm.get('firstName')?.invalid">
+          <small *ngIf=" editForm.get('firstName')!.errors!['required']" class='error-text'>First name is
+            required</small>
+        </div>
       </div>
 
       <div>
         <label class='input-label' for="first-name">Last Name</label>
         <input formControlName="lastName" class='edit-input input' id='first-name' type="text">
+        <div class="error" *ngIf="editForm.get('lastName')?.invalid">
+          <small *ngIf=" editForm.get('lastName')!.errors!['required']" class='error-text'>Last name is required</small>
+        </div>
       </div>
 
       <div>
         <label class='input-label' for="first-name">Email</label>
         <input formControlName="email" class='edit-input input' id='first-name' type="text">
-        <div class="error">
-          <!-- <small class='error-text'>error</small> -->
+        <div class="error" *ngIf="editForm.get('email')?.invalid">
+          <small *ngIf=" editForm.get('email')!.errors!['required']" class='error-text'>Email is required</small>
+          <small *ngIf=" editForm.get('email')!.errors!['email']" class='error-text'>Email is invalid</small>
         </div>
       </div>
 
