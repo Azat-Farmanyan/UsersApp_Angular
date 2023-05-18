@@ -9,15 +9,16 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit, OnDestroy {
-  users: User[] = [];
+  // users: User[] = [];
 
   usersSubs: Subscription;
+  deleteUserSubs: Subscription;
 
   loading = false;
   deletedUserId: number | null = 0;
   pageNumber = 1;
   openDeleteModal = false;
-  constructor(private usersService: UsersService) {}
+  constructor(public usersService: UsersService) {}
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -32,14 +33,21 @@ export class UsersPageComponent implements OnInit, OnDestroy {
     this.usersSubs = this.usersService
       .getUsers(this.usersService.activePage)
       .subscribe((el: any) => {
-        this.users = el.data;
+        this.usersService.users = el.data;
         this.loading = false;
         // console.log(this.users);
       });
   }
 
   deleteUser() {
-    console.log(this.deletedUserId);
+    this.deleteUserSubs = this.usersService
+      .deleteUser(this.deletedUserId as number)
+      .subscribe(() => {
+        this.usersService.users = this.usersService.users.filter(
+          (user) => +user.id !== this.deletedUserId
+        );
+        this.closeDeleteModal();
+      });
   }
 
   showDeleteModal(userId: number) {
@@ -57,5 +65,6 @@ export class UsersPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.usersSubs) this.usersSubs.unsubscribe;
+    if (this.deleteUserSubs) this.deleteUserSubs.unsubscribe();
   }
 }

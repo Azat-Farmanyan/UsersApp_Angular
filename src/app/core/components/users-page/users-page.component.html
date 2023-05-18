@@ -2,11 +2,16 @@
   <div class="wrapper users-page-body">
     <app-confirm-delete-modal (onCancel)="closeDeleteModal()" (onDelete)='deleteUser()'
       *ngIf="openDeleteModal"></app-confirm-delete-modal>
+
     <h1 class='big-title'>Users</h1>
     <div *ngIf="!loading">
-      <div class="cards">
-        <app-user-card (onDelete)="showDeleteModal(+user.id)" *ngFor="let user of users" [user]="user"></app-user-card>
+      <div class="cards" *ngIf=" this.usersService.users.length; else noUsers">
+        <app-user-card (onDelete)="showDeleteModal(+user.id)" *ngFor="let user of this.usersService.users"
+          [user]="user"></app-user-card>
       </div>
+      <ng-template #noUsers>
+        <p class='text' style='text-align: center;'>There are no users</p>
+      </ng-template>
       <div class="page-nav">
         <button (click)="changePage(1)" [ngClass]="{'active': pageNumber === 1}" class='text page-nav-btn'>1</button>
         <button (click)="changePage(2)" [ngClass]="{'active': pageNumber === 2}" class='text page-nav-btn'>2</button>

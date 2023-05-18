@@ -1,5 +1,7 @@
 <div class="user-block">
   <div class="wrapper user-body">
+    <app-confirm-delete-modal (onDelete)="deleteUser()" (onCancel)="closeDeleteModal()"
+      *ngIf="openDeleteModal"></app-confirm-delete-modal>
     <div class="user-header">
       <img [routerLink]="['/users-page']" src="../../../../assets/icons/return-back.svg" alt="return"
         class='return-back'>

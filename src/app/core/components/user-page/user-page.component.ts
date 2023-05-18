@@ -1,6 +1,6 @@
 import { User } from './../../interfaces/user';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs';
 
@@ -14,6 +14,9 @@ export class UserPageComponent implements OnInit, OnDestroy {
   userSubs: Subscription;
 
   loading = false;
+  openDeleteModal = false;
+
+  deleteUserSubs: Subscription;
 
   user: User = {
     avatar: '',
@@ -24,8 +27,9 @@ export class UserPageComponent implements OnInit, OnDestroy {
   };
 
   constructor(
-    private router: ActivatedRoute,
-    private usersService: UsersService
+    private route: ActivatedRoute,
+    private usersService: UsersService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +38,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   fetchUser() {
     this.loading = true;
-    this.paramsSubscription = this.router.queryParams.subscribe((res: any) => {
+    this.paramsSubscription = this.route.queryParams.subscribe((res: any) => {
       this.usersService.getUserById(+res.id).subscribe((user: any) => {
         this.user = user.data;
         this.loading = false;
@@ -42,11 +46,29 @@ export class UserPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  deleteUser() {
+    this.deleteUserSubs = this.usersService
+      .deleteUser(this.user.id)
+      .subscribe((deletedUser: any) => {
+        this.router.navigate(['/users-page']);
+      });
+  }
+
   onClickEdit() {}
-  onClickDelete() {}
+  onClickDelete() {
+    this.showDeleteModal();
+  }
+
+  showDeleteModal() {
+    this.openDeleteModal = true;
+  }
+  closeDeleteModal() {
+    this.openDeleteModal = false;
+  }
 
   ngOnDestroy(): void {
     if (this.paramsSubscription) this.paramsSubscription.unsubscribe();
     if (this.userSubs) this.userSubs.unsubscribe();
+    if (this.deleteUserSubs) this.deleteUserSubs.unsubscribe();
   }
 }
