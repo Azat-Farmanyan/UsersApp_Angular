@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs';
+import { UpdatedUser } from './edit-modal/edit-modal.component';
 
 @Component({
   selector: 'app-user-page',
@@ -15,8 +16,10 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   loading = false;
   openDeleteModal = false;
+  openEditModal = false;
 
   deleteUserSubs: Subscription;
+  updateUserSubs: Subscription;
 
   user: User = {
     avatar: '',
@@ -37,6 +40,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
   }
 
   fetchUser() {
+    // console.log('fetch');
     this.loading = true;
     this.paramsSubscription = this.route.queryParams.subscribe((res: any) => {
       this.usersService.getUserById(+res.id).subscribe((user: any) => {
@@ -53,8 +57,23 @@ export class UserPageComponent implements OnInit, OnDestroy {
         this.router.navigate(['/users-page']);
       });
   }
+  updateUser(updatedUser: UpdatedUser) {
+    // console.log('update', updatedUser);
+    this.updateUserSubs = this.usersService
+      .updateUser(this.user.id, updatedUser)
+      .subscribe((updatedUserResponse: any) => {
+        console.log(updatedUserResponse);
+        this.closeEditModal();
+        this.user.first_name = updatedUserResponse!.firstName;
+        this.user.last_name = updatedUserResponse!.lastName;
+        this.user.email = updatedUserResponse!.email;
+        // this.fetchUser();
+      });
+  }
 
-  onClickEdit() {}
+  onClickEdit() {
+    this.showEditModal();
+  }
   onClickDelete() {
     this.showDeleteModal();
   }
@@ -66,9 +85,17 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.openDeleteModal = false;
   }
 
+  showEditModal() {
+    this.openEditModal = true;
+  }
+  closeEditModal() {
+    this.openEditModal = false;
+  }
+
   ngOnDestroy(): void {
     if (this.paramsSubscription) this.paramsSubscription.unsubscribe();
     if (this.userSubs) this.userSubs.unsubscribe();
     if (this.deleteUserSubs) this.deleteUserSubs.unsubscribe();
+    if (this.updateUserSubs) this.updateUserSubs.unsubscribe();
   }
 }

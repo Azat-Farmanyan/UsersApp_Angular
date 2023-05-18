@@ -14,6 +14,7 @@ import {
 })
 export class BtnComponent implements OnInit, OnChanges {
   @Input() btnTitle: string = '';
+  @Input() btnDisabled: boolean = false;
   @Output() onClickBtn = new EventEmitter();
   btnIconFolderPAth = '../../../../assets/icons/';
 

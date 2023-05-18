@@ -1,1 +1,37 @@
-<p>edit-modal works!</p>
+<div (click)="cancel()" class="edit-modal-bg"></div>
+
+<div class="edit-modal">
+  <div class="edit-modal-body">
+    <img (click)="cancel()" class='close-icon' src="../../../../../assets/icons/close-icon.svg" alt="close">
+    <h3 class='medium-title'>Edit</h3>
+
+    <form [formGroup]="editForm" class='edit-form'>
+      <div>
+        <label class='input-label' for="first-name">First Name</label>
+        <input formControlName="firstName" class='edit-input input' id='first-name' type="text">
+      </div>
+
+      <div>
+        <label class='input-label' for="first-name">Last Name</label>
+        <input formControlName="lastName" class='edit-input input' id='first-name' type="text">
+      </div>
+
+      <div>
+        <label class='input-label' for="first-name">Email</label>
+        <input formControlName="email" class='edit-input input' id='first-name' type="text">
+        <div class="error">
+          <!-- <small class='error-text'>error</small> -->
+        </div>
+      </div>
+
+      <div class="btns-block">
+        <button type='submit'>
+          <app-btn [btnDisabled]="!editForm.valid" (onClickBtn)="save()" btnTitle="Save"></app-btn>
+        </button>
+        <button type='button'>
+          <app-btn (onClickBtn)="cancel()" btnTitle="Cancel"></app-btn>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

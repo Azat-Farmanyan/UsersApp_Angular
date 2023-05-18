@@ -23,7 +23,6 @@ export class UserCardComponent implements OnInit {
   ngOnInit(): void {}
 
   onClickAbout() {
-    console.log('onClickAbout');
     this.router.navigate(['user-page'], {
       queryParams: { id: this.user.id },
     });

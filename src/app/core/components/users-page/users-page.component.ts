@@ -24,9 +24,9 @@ export class UsersPageComponent implements OnInit, OnDestroy {
     this.fetchUsers();
   }
 
-  clicked() {
-    console.log('clicked');
-  }
+  // clicked() {
+  //   console.log('clicked');
+  // }
 
   fetchUsers() {
     this.loading = true;

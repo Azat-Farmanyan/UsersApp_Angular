@@ -1,0 +1,54 @@
+.users-page-block .users-page-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 50px;
+}
+
+.users-page-block .users-page-body .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 30px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.users-page-block .users-page-body .page-nav {
+  width: 100px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.users-page-block .users-page-body .page-nav .page-nav-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border: 0.5px solid var(--blue);
+  border-radius: 50%;
+  color: var(--blue);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.users-page-block .users-page-body .page-nav .page-nav-btn:hover {
+  color: #fff;
+  background: var(--blue);
+}
+
+.users-page-block .users-page-body .page-nav .active {
+  background: var(--blue);
+  border-radius: 50%;
+  color: #fff;
+}

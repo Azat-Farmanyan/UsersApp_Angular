@@ -2,7 +2,8 @@
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html,
@@ -64,7 +65,10 @@ video {
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+          text-size-adjust: none;
 }
 
 footer,
@@ -106,10 +110,12 @@ input {
   -webkit-appearance: none;
   border-radius: 0;
 }
+
 textarea:focus,
 input:focus {
   outline: none;
 }
+
 button,
 input[type="submit"],
 input[type="reset"] {
@@ -121,6 +127,7 @@ input[type="reset"] {
   cursor: pointer;
   outline: inherit;
 }
+
 a:link {
   text-decoration: none;
 }
@@ -137,11 +144,10 @@ a:active {
   text-decoration: none;
 }
 
-// -----------------------------------
 * body {
   font-family: "Roboto", sans-serif;
 }
-// COlORS
+
 :root {
   --black: #000000;
   --black-light: #282828;
@@ -158,6 +164,7 @@ a:active {
 .wrapper {
   padding: 50px;
 }
+
 .big-title {
   font-family: "Roboto";
   font-style: normal;
@@ -177,6 +184,7 @@ a:active {
   text-align: center;
   color: #181818;
 }
+
 .text {
   font-family: "Roboto";
   font-style: normal;
@@ -192,7 +200,6 @@ a:active {
   border: 1px solid #d9d9d9;
   border-radius: 10px;
   min-height: 50px;
-
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
@@ -201,6 +208,7 @@ a:active {
   color: var(--black);
   padding: 0 15px;
 }
+
 .input-label {
   font-family: "Roboto";
   font-style: normal;

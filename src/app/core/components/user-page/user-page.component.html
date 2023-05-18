@@ -1,12 +1,19 @@
 <div class="user-block">
   <div class="wrapper user-body">
+
+    <!-- Modals -->
     <app-confirm-delete-modal (onDelete)="deleteUser()" (onCancel)="closeDeleteModal()"
       *ngIf="openDeleteModal"></app-confirm-delete-modal>
+    <app-edit-modal [user]="user" (onSave)="updateUser($event)" (onCancel)="closeEditModal()"
+      *ngIf="openEditModal"></app-edit-modal>
+    <!--End Of Modals -->
+    <!-- onSave -->
+
     <div class="user-header">
       <img [routerLink]="['/users-page']" src="../../../../assets/icons/return-back.svg" alt="return"
         class='return-back'>
       <h1 class='big-title'>User page</h1>
-      <app-btn btnTitle="Log Out"></app-btn>
+      <!-- <app-btn btnTitle="Log Out"></app-btn> -->
     </div>
     <div class="main" *ngIf="!loading">
       <img [src]="user.avatar?user.avatar:'../../../../assets/images/default-avatar.jpg'" [alt]="user.first_name"

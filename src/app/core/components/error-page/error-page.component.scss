@@ -1,0 +1,29 @@
+.error-page-body {
+  max-width: 345px;
+  width: 100%;
+  margin: 120px auto 0;
+  .very-big-title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 234px;
+    text-align: center;
+
+    color: #000000;
+  }
+  .go-back {
+    margin-top: 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+
+    background: #ffba52;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 0.5s ease;
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+}

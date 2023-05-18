@@ -1,0 +1,57 @@
+.user-card {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.user-card:hover {
+  -webkit-box-shadow: 0px 4px 7px rgba(104, 199, 228, 0.4);
+          box-shadow: 0px 4px 7px rgba(104, 199, 228, 0.4);
+}
+
+.user-card .user-card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-card .user-card-body .card-img {
+  max-width: 300px;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.user-card .user-card-body .card-text-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  background-color: var(--blue-light);
+  padding: 20px;
+}
+
+.user-card .user-card-body .card-text-block .btns-block {
+  margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
